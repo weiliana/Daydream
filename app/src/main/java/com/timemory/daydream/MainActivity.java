@@ -13,6 +13,10 @@ import com.timemory.daydream.network.SisterApi;
 
 import java.util.ArrayList;
 
+/**
+ * Description：主活动
+ * @author AUSTER on 19.6.12.
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button showBtn;
     private Button refreshBtn;
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int curPos = 0;
     private PictureLoader loader;
     private SisterApi sisterApi;
+    private SisterTask sisterTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initData(){
         data = new ArrayList<>();
-        new SisterTask(page).execute();
     }
 
     private void initUI(){
@@ -64,7 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_reflesh:
                 page++;
-                new SisterTask(page).execute();
+                sisterTask = new SisterTask();
+                sisterTask.execute();
                 curPos = 0;
                 break;
             default:
@@ -74,10 +79,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private class SisterTask extends AsyncTask<Void, Void, ArrayList<Sister>>{
-        private int page;
 
-        public SisterTask(int page){
-            this.page = page;
+        public SisterTask(){
+
         }
 
         @Override
@@ -90,6 +94,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             super.onPostExecute(sisters);
             data.clear();
             data.addAll(sisters);
+            page++;
         }
+        @Override
+        protected void onCancelled(){
+            super.onCancelled();
+            sisterTask = null;
+        }
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        sisterTask.cancel(true);
     }
 }

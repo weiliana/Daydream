@@ -71,7 +71,8 @@ public class PictureLoader {
                 connection.setRequestMethod("GET");
                 connection.setReadTimeout(10000);
                 System.out.println("get the image");
-                if (connection.getResponseCode() == 200){
+                int code = connection.getResponseCode();
+                if (code == 200){
                     InputStream inputStream = connection.getInputStream();
                     ByteArrayOutputStream out = new ByteArrayOutputStream();
                     byte[] bytes = new byte[1024];
