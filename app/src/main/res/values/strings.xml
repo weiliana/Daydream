@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Daydream</string>
-    <string name="button_moreSister">More</string>
+    <string name="button_show">下一个</string>
+    <string name="button_reflesh">换一批</string>
 </resources>

@@ -6,14 +6,31 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_show"
+        android:layout_width="102dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="40dp"
         android:onClick="onClick"
-        android:text="@string/button_moreSister" />
+        android:text="@string/button_show" />
+
+    <Button
+        android:id="@+id/btn_reflesh"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="86dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="38dp"
+        android:layout_toEndOf="@+id/btn_show"
+        android:onClick="onClick"
+        android:text="@string/button_reflesh" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_show"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitCenter" />

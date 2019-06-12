@@ -1,4 +1,4 @@
-package com.timemory.daydream;
+package com.timemory.daydream.imageloader;
 
 
 import android.graphics.Bitmap;
